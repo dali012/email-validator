@@ -3,16 +3,16 @@ import { cn } from "@/lib/utils";
 import { Check, Star } from "lucide-react";
 import localFont from "next/font/local";
 import Image from "next/image";
-import { getWorkersAnalytics } from "@/utils/getAllRequest";
 import { Icons } from "@/components/Icons";
 import { AnimatedCode } from "@/components/AnimatedCode";
+import { redis } from "@/lib/redis";
 
 const fontScary = localFont({
   src: "../assets/Scary.ttf",
 });
 
 export default async function Home() {
-  const requests = await getWorkersAnalytics();
+  const requests = await redis.get("served-requests");
 
   return (
     <div className="bg-blue-50 grainy-light">
@@ -117,7 +117,7 @@ export default async function Home() {
                     <span className="font-semibold">
                       {(Math.ceil(Number(requests) / 10) * 10).toLocaleString()}
                     </span>{" "}
-                    API requests served (last 24 hours){" "}
+                    API requests served{" "}
                   </p>
                 </div>
               </div>

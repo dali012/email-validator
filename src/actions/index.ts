@@ -1,5 +1,7 @@
 "use server";
 
+import { redis } from "@/lib/redis";
+
 export type ApiSuccess = {
   success: boolean;
   result: {
@@ -34,6 +36,8 @@ export const checkValidity = async ({ email }: { email: string }) => {
         },
       }
     );
+
+    await redis.incr("served-requests");
 
     const json = await res.json();
 
