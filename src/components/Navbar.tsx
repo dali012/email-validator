@@ -25,10 +25,18 @@ const Navbar = () => {
           <div className="hidden sm:block invisible">EmailValidatorAPI</div>
 
           <div className="hidden sm:flex items-center gap-6">
-            <Link className="hover:underline" href="#api">
-              API
+            <Link className="hover:underline" href="/create-api-key">
+              Create API key
+            </Link>
+            <Link
+              className="hover:underline"
+              href="https://email-validator.dali012.me"
+              target="_blank"
+            >
+              Docs
             </Link>
           </div>
+
           <Link
             href="https://github.com/dali012/email-validator-api"
             target="_blank"

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { useMutation } from "@tanstack/react-query";
-import { ApiSuccess, checkValidity } from "@/actions";
+import { checkValidity } from "@/actions";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import { TypingAnimation } from "./magicui/typing-animation";
@@ -25,8 +25,6 @@ const Demo = () => {
       });
     },
   });
-
-  const successData = data?.success ? (data as ApiSuccess) : null;
 
   return (
     <div className="flex flex-col gap-5 items-center">
@@ -66,10 +64,10 @@ const Demo = () => {
           </Button>
         </div>
         <div className="h-32 mt-4 rounded-lg border-2 border-dashed border-zinc-300 text-sm flex items-center justify-center">
-          {successData ? (
+          {data ? (
             <div className="flex flex-col items-center text-center w-full max-w-xs">
               <p className="font-bold mb-2">
-                {successData.result.is_valid ? (
+                {data.result.is_valid ? (
                   <span className="text-green-600">✅ Valid Email Address</span>
                 ) : (
                   <span className="text-red-600">❌ Invalid Email Address</span>
@@ -77,7 +75,7 @@ const Demo = () => {
               </p>
 
               <p className="text-sm text-zinc-700 mb-2">
-                Score: {successData.result.score.toFixed(2)} (higher is better)
+                Score: {data.result.score.toFixed(2)} (higher is better)
               </p>
 
               <div className="text-xs text-zinc-600 w-full grid grid-cols-2 gap-x-4 gap-y-1">
@@ -85,12 +83,12 @@ const Demo = () => {
                   <span>Syntax</span>
                   <span
                     className={
-                      successData.result.checks.syntax
+                      data.result.checks.syntax
                         ? "text-green-500 font-medium"
                         : "text-red-500 font-medium"
                     }
                   >
-                    {successData.result.checks.syntax ? "✓" : "✗"}
+                    {data.result.checks.syntax ? "✓" : "✗"}
                   </span>
                 </div>
 
@@ -98,12 +96,12 @@ const Demo = () => {
                   <span>MX Records</span>
                   <span
                     className={
-                      successData.result.checks.mx_records
+                      data.result.checks.mx_records
                         ? "text-green-500 font-medium"
                         : "text-red-500 font-medium"
                     }
                   >
-                    {successData.result.checks.mx_records ? "✓" : "✗"}
+                    {data.result.checks.mx_records ? "✓" : "✗"}
                   </span>
                 </div>
 
@@ -111,12 +109,12 @@ const Demo = () => {
                   <span>Not Disposable</span>
                   <span
                     className={
-                      !successData.result.checks.disposable
+                      !data.result.checks.disposable
                         ? "text-green-500 font-medium"
                         : "text-red-500 font-medium"
                     }
                   >
-                    {!successData.result.checks.disposable ? "✓" : "✗"}
+                    {!data.result.checks.disposable ? "✓" : "✗"}
                   </span>
                 </div>
 
@@ -124,12 +122,12 @@ const Demo = () => {
                   <span>Not Role Account</span>
                   <span
                     className={
-                      !successData.result.checks.role_account
+                      !data.result.checks.role_account
                         ? "text-green-500 font-medium"
                         : "text-red-500 font-medium"
                     }
                   >
-                    {!successData.result.checks.role_account ? "✓" : "✗"}
+                    {!data.result.checks.role_account ? "✓" : "✗"}
                   </span>
                 </div>
 
@@ -137,12 +135,12 @@ const Demo = () => {
                   <span>Free Provider</span>
                   <span
                     className={
-                      !successData.result.checks.free_provider
+                      !data.result.checks.free_provider
                         ? "text-red-500 font-medium"
                         : "text-green-500 font-medium"
                     }
                   >
-                    {successData.result.checks.free_provider ? "✓" : "✗"}
+                    {data.result.checks.free_provider ? "✓" : "✗"}
                   </span>
                 </div>
               </div>
