@@ -32,7 +32,7 @@ export const checkValidity = async ({ email }: { email: string }) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "x-api-key": apiKey!,
+          "Authorization": `Bearer ${apiKey}`,
         },
       }
     );

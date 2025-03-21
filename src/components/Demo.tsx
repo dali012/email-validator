@@ -7,6 +7,7 @@ import { useMutation } from "@tanstack/react-query";
 import { ApiSuccess, checkValidity } from "@/actions";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
+import { TypingAnimation } from "./magicui/typing-animation";
 
 const Demo = () => {
   const [email, setEmail] = useState<string>("dali.jerbi97@gmail.com");
@@ -147,7 +148,22 @@ const Demo = () => {
               </div>
             </div>
           ) : (
-            <p className="text-zinc-700">Results will be shown here</p>
+            <>
+              {isPending ? (
+                <div className="flex items-center justify-center">
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span className="ml-2">Validating...</span>
+                </div>
+              ) : (
+                <TypingAnimation
+                  className="text-zinc-700 text-sm"
+                  startOnView
+                  duration={70}
+                >
+                  Results will be shown here
+                </TypingAnimation>
+              )}
+            </>
           )}
         </div>
       </div>

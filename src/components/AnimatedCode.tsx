@@ -11,7 +11,7 @@ const response = await fetch(
   {
     headers: {
       'Content-Type': 'application/json',
-      'x-api-key': 'your-api-key'
+      "Authorization": "Bearer api_key",
     }
   }
 );
