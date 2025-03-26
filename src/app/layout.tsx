@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  maximumScale: 1, // Disable auto-zoom on mobile Safari, credit to https://github.com/ai-ng
+  maximumScale: 1,
 };
 
 export default function RootLayout({
