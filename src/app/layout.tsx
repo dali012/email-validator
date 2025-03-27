@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 import Providers from "@/providers";
 import Footer from "@/components/Footer";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const recursive = Recursive({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleAnalytics gaId="G-2Q8RD1SFGD" />
       <body className={recursive.className}>
         <Navbar />
         <Providers>{children}</Providers>
